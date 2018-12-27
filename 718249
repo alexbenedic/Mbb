@@ -1,0 +1,138 @@
+-- Adminer 4.6.3 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+CREATE TABLE `dashboard_cc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `dashboard_entity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `dashboard_report` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `nickname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `dashboard_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `dashboard_usereg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` int(11) DEFAULT NULL,
+  `entity` varchar(255) DEFAULT NULL,
+  `productline` varchar(255) DEFAULT NULL,
+  `costcenter` varchar(255) DEFAULT NULL,
+  `reporting` text,
+  `access` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `role` (`role`),
+  KEY `entity` (`entity`),
+  CONSTRAINT `dashboard_usereg_ibfk_3` FOREIGN KEY (`role`) REFERENCES `dashboard_role` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `dashboard_usereg` (`id`, `username`, `password`, `role`, `entity`, `productline`, `costcenter`, `reporting`, `access`) VALUES
+
+(1,	'mbbadmin',	'YWRtaW5hZG1pbmFkbWlu',	1,	'1',	'1',	'1',	'1|2|3|4|5|6|7|8|9|10|11|12|13',	'Admin');
+
+
+CREATE TABLE `glpi_active_chart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desktop` int(11) DEFAULT NULL,
+  `laptop` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT NULL,
+  `printer` int(11) DEFAULT NULL,
+  `network` int(11) DEFAULT NULL,
+  `storage` int(11) DEFAULT NULL,
+  `dateime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `glpi_decom_chart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desktop` int(11) DEFAULT NULL,
+  `laptop` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT NULL,
+  `printer` int(11) DEFAULT NULL,
+  `network` int(11) DEFAULT NULL,
+  `storage` int(11) DEFAULT NULL,
+  `dateime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `glpi_decom_chart_month` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desktop` int(11) DEFAULT NULL,
+  `laptop` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT NULL,
+  `printer` int(11) DEFAULT NULL,
+  `network` int(11) DEFAULT NULL,
+  `storage` int(11) DEFAULT NULL,
+  `dateime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `glpi_noupdate_chart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desktop` int(11) DEFAULT NULL,
+  `laptop` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT NULL,
+  `printer` int(11) DEFAULT NULL,
+  `network` int(11) DEFAULT NULL,
+  `storage` int(11) DEFAULT NULL,
+  `dateime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `glpi_dist_chart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desktop` int(11) DEFAULT NULL,
+  `laptop` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT NULL,
+  `printer` int(11) DEFAULT NULL,
+  `network` int(11) DEFAULT NULL,
+  `storage` int(11) DEFAULT NULL,
+  `dateime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `glpi_new_asset` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desktop` int(11) DEFAULT NULL,
+  `laptop` int(11) DEFAULT NULL,
+  `server` int(11) DEFAULT NULL,
+  `printer` int(11) DEFAULT NULL,
+  `network` int(11) DEFAULT NULL,
+  `storage` int(11) DEFAULT NULL,
+  `dateime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- 2018-12-12 05:36:13
