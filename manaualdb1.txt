@@ -1,0 +1,5 @@
+INSERT INTO `glpi_plugin_fields_fields` (`id`, `name`, `label`, `type`, `plugin_fields_containers_id`, `ranking`, `default_value`, `is_active`, `is_readonly`, `mandatory`) VALUES
+(5,	'applicationownerfield',	'Application Owner',	'text',	3,	2,	'',	1,	0,	0),
+(4,	'applicationnamefield',	'Application Name',	'text',	3,	1,	'',	1,	0,	0),
+(6,	'tierfield',	'Tier',	'text',	3,	3,	'',	1,	0,	0),
+(7,	'assettagnumfield',	'Asset Tag  Num',	'text',	3,	4,	'',	1,	0,	0);
